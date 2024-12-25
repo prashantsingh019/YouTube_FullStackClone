@@ -13,7 +13,7 @@ const Gallery = () => {
             })
         }
       </div>
-       <div className="video-gallery flex flex-wrap gap-10 border justify-center p-2">
+       <div className="video-gallery flex flex-wrap gap-10 border justify-center p-[0.5rem]">
         {videosThumbnail.map((video) => {
           return  <Video data={video}/>
         })}
