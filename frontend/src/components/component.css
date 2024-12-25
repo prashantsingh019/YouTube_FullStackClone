@@ -1,0 +1,75 @@
+#icon-main{
+    width: 100%;
+    height: 80%;
+}
+nav{
+    font-size: 1.2rem;
+    padding: 0px 10px 0px 10px;
+}
+nav section{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 20px;
+}
+#searchbar{
+    width: 90%;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 10px 0px 0px 10px;
+    font-size: 0.9em;
+}
+.search-sect{
+    width: 450px;
+    padding: 1px;
+    border-radius: 14px;
+    display: flex;
+    border: 1px solid grey;
+
+}
+.icon-search{
+    border-radius: 0px 10px 10px 0px;
+    cursor: pointer;
+}
+.logo{
+    font-size: 1.3em;
+    font-weight: 500;
+}
+#sidebar .sidebar-option{
+  /* */
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px;
+  border-radius: 5px;
+}
+#sidebar .sidebar-option:hover{
+    background-color: rgba(250, 172, 169, 0.428);
+    cursor: pointer;
+}
+#sidebar{
+    /* background-color: rgb(44, 235, 235); */
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.top,.middle,.bottom{
+    border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+}
+.tag{
+    box-shadow: 0px 0px 5px 1px rgba(205, 203, 203, 0.793);
+    margin: 2px;
+    padding: 4px 2px;
+    border-radius: 5px;
+}
+.tag:hover{
+    background-color: rgba(251, 205, 205, 0.793);
+}
+
+.details h3{
+    font-size: 1.2em;
+}

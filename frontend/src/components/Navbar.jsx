@@ -17,7 +17,7 @@ const Navbar = () => {
       {/* logo and hamburger menu */}
          <section className="h-14">
          <FontAwesomeIcon icon={faBars} />
-         <div className="logo h-[100%] flex items-center gap-1">
+         <div className="logo h-[100%] flex items-center gap-1 font-serif font-boldest">
          <img src={YouTube} alt="_YouTube Icon" id="icon-main" />
          YouTube <sup className="text-sm">IN</sup>
         </div>
