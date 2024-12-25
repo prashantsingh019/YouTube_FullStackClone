@@ -5,12 +5,13 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";
 import "./component.css";
 
 const Video = ({data}) => {
+  console.log(data);
   
   return (
-    <div className='w-96 shadow-md'>
+    <div className='w-[30%] shadow-lg cursor-pointer'>
        <div className="thumbnail">
-          <img src={`https://raw.githubusercontent.com/prashantsingh019/YouTube_FullStackClone/refs/heads/main/src/assets/YT-DummyVideo/Video1.png`}/>
-          {console.log(data)}
+          <img src={`https://raw.githubusercontent.com/prashantsingh019/YouTube_FullStackClone/refs/heads/main/frontend/src/assets/YT-DummyVideo/${data}`}/>
+          
        </div>
        <div className="details flex w-[100%] gap-5">
          <div className="channel-icon px-1">
