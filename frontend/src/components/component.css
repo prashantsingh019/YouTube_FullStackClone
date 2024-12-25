@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 #icon-main{
     width: 100%;
     height: 80%;
@@ -31,29 +32,41 @@ nav section{
     border-radius: 0px 10px 10px 0px;
     cursor: pointer;
 }
-.logo{
-    font-size: 1.3em;
-    font-weight: 500;
+.logo,sup{
+    font-size: 1em;
+    font-weight: 700;
+    /* background-color: blue; */
+    font-family: roboto;
+    letter-spacing: -0.5px;
+    cursor: pointer;
 }
-#sidebar .sidebar-option{
-  /* */
+.sidebar .sidebar-option{
+  
   margin: 5px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 15px; 
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 5px; 
+  /* flex-direction: column; */
+  /* font-size: small; */
 }
-#sidebar .sidebar-option:hover{
+.sidebar .sidebar-option:hover{
     background-color: rgba(250, 172, 169, 0.428);
     cursor: pointer;
 }
-#sidebar{
-    /* background-color: rgb(44, 235, 235); */
+.sidebar{
     font-size: 14px;
     font-weight: 400;
+    transition: all 0.6s ease;
 }
-
+.sidebar .close{
+    flex-direction: column;
+    /* background-color: chocolate; */
+    padding: 0px;
+    gap: 6px;
+    font-size: small;
+}
 .top,.middle,.bottom{
     border-bottom: 1px solid grey;
     display: flex;
@@ -63,13 +76,18 @@ nav section{
 .tag{
     box-shadow: 0px 0px 5px 1px rgba(205, 203, 203, 0.793);
     margin: 2px;
-    padding: 4px 2px;
+    padding: .2em .2em;
     border-radius: 5px;
 }
 .tag:hover{
-    background-color: rgba(251, 205, 205, 0.793);
+    background-color: rgba(210, 210, 210, 0.793);
 }
 
 .details h3{
     font-size: 1.2em;
+}
+
+.hide{
+    display: none;
+    background-color: aqua;
 }
