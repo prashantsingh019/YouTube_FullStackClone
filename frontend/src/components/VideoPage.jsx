@@ -9,9 +9,11 @@ import dislike from "../assets/dislike.svg"
 import share from "../assets/share.svg";
 import dots from "../assets/three-dots.svg";
 import emoji from "../assets/emoji.svg"
+import Comment from './Comment';
+import VideoCard from './VideoCard';
 const VideoPage = () => {
   return (
-    <div>
+    <div className='flex'>
       <div className="left-side w-[590px]">
          <div className="display bg-red-300 flex items-center justify-center overflow-hidden">
          <iframe width="600" height="335" src="https://www.youtube.com/embed/IiYI2xS_dvc?si=9ivyVqKpzGFpxVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -71,11 +73,39 @@ const VideoPage = () => {
                      </div>
                    </section>
                 </div>
+                <div className="comment-sect flex gap-2 flex-col">
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                </div>
             </div>
             </div>
          </div>
       </div>
-      <div className="right-side"></div>
+      <div className="right-side p-1 flex-col flex gap-1">
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+        <VideoCard/>
+      </div>
     </div>
   )
 }
