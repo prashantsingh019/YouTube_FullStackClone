@@ -91,3 +91,15 @@ nav section{
     display: none;
     background-color: aqua;
 }
+
+.display{
+    width: 590px;
+    height: 332px;
+    border-radius: 26px;
+    /* box-shadow: 0px 0px 7px gray; */
+}
+
+.right-middle button,div button {
+    
+    padding: .4em 1em;
+}
