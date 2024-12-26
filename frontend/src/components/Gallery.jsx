@@ -1,7 +1,7 @@
 import React from 'react'
 import Tags from './tags'
 import { videosThumbnail, youtubeTags } from '../utils/dummyData'
-import Video from './video'
+import Video from './Video'
 
 const Gallery = () => {
   return (
