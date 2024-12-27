@@ -114,5 +114,16 @@ nav section{
     display: flex;
     gap:15px;
 }
+.below-user-settings:hover{
+    background-color: rgb(253, 224, 229);
+}
+.right-sidebar{
+    /* background-color: chartreuse; */
+    visibility: hidden;
+    right: 45px;
+    transition: all 0.1s ease;
+}
 
-
+.open-right{
+    visibility: visible;
+}
