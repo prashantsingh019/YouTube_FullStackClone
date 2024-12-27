@@ -103,3 +103,16 @@ nav section{
     
     padding: .4em 1em;
 }
+
+.below-user-settings{
+    /* background-color: orange; */
+    margin: 1px;
+    padding: 7px;
+    cursor: pointer;
+    padding-right: 40px;
+    border-bottom: 0px solid #787474;
+    display: flex;
+    gap:15px;
+}
+
+
