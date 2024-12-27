@@ -4,6 +4,7 @@ import { videosThumbnail, youtubeTags } from '../utils/dummyData'
 import Video from './Video'
 
 const Gallery = () => {
+ 
   return (
     <div>
        <div className="tags">
