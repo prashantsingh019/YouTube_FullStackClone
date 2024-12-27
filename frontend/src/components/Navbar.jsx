@@ -11,16 +11,19 @@ import {
   faBell,
   faUser
 } from "@fortawesome/free-solid-svg-icons";
-
-const Navbar = ({sidebar}) => {
-  
+import { useNavigate } from 'react-router';
+const Navbar = ({sidebar,rightSidebar}) => {
+  const navigate = useNavigate();  
+  const handleClick = () => {
+    navigate('/')
+  }
   
   return (
     <nav className="h-14 flex items-center justify-between">
       {/* logo and hamburger menu */}
          <section className="h-14">
          <FontAwesomeIcon icon={faBars} onClick={sidebar} className="cursor-pointer"/>
-         <div className="logo h-[100%] flex items-center gap-1 font-serif font-boldest">
+         <div className="logo h-[100%] flex items-center gap-1 font-serif font-boldest" onClick={handleClick}>
          <img src={YouTube} alt="_YouTube Icon" id="icon-main" />
          YouTube <sup className="text-sm">IN</sup>
         </div>
@@ -49,7 +52,7 @@ const Navbar = ({sidebar}) => {
         <FontAwesomeIcon icon={faBell}/>
          </div>
        
-         <div className="user rounded-full px-3 py-2 bg-gray-200">
+         <div className="user rounded-full px-3 py-2 bg-gray-200 cursor-pointer" onClick={rightSidebar}>
          <FontAwesomeIcon icon={faUser} />
          </div>
         </div>
