@@ -3,12 +3,15 @@ import thumbnail from "../assets/YT-DummyVideo/Video1.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import "./component.css";
+import { useNavigate } from 'react-router';
 
 const Video = ({data}) => {
-  console.log(data);
-  
+  const navigate = useNavigate();  
+  const handleClick = () => {
+    navigate('/watch')
+  }
   return (
-    <div className='w-[30%] shadow-lg cursor-pointer'>
+    <div className='w-[30%] shadow-lg cursor-pointer' onClick={handleClick}>
        <div className="thumbnail">
           <img src={`https://raw.githubusercontent.com/prashantsingh019/YouTube_FullStackClone/refs/heads/main/frontend/src/assets/YT-DummyVideo/${data}`}/>
           
