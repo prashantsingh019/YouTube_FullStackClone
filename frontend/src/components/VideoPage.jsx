@@ -18,6 +18,7 @@ const VideoPage = () => {
          <div className="display bg-red-300 flex items-center justify-center overflow-hidden">
          <iframe width="600" height="335" src="https://www.youtube.com/embed/IiYI2xS_dvc?si=9ivyVqKpzGFpxVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
          </div>
+
          <div className="channel-info-user-intro">
            <h1 className='text-2xl'>Inside Google: A Week in the Life of a Software Engineer During the Festive Season! 🎄</h1>
            <div className="middle-channel flex justify-between">
@@ -60,7 +61,7 @@ const VideoPage = () => {
 
                 <div className="user-comment flex">
                    <section className="left-user w-[10%] flex items-center">
-                   <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-3 bg-gray-300 m-auto'/>
+                   <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-3 bg-gray-300'/>
                    </section>
                    <section className="left-user w-[90%] flex flex-col">
                      <input type="text" className='outline-none border-b-2 border-black p-1' placeholder='Add a comment'/>
@@ -85,7 +86,9 @@ const VideoPage = () => {
             </div>
             </div>
          </div>
+         
       </div>
+
       <div className="right-side p-1 flex-col flex gap-1">
         <VideoCard/>
         <VideoCard/>
