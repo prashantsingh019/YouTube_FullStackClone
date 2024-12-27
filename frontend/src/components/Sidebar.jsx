@@ -9,11 +9,16 @@ import subscription from "../assets/youtube-subscription.svg"
 import playlist from "../assets/playlist_play_icon.svg"
 import like from "../assets/like.svg"
 import watchlater from "../assets/watch-later.svg"
+import { useNavigate } from 'react-router';
 const Sidebar = ({visiblity}) => {
+    const navigate = useNavigate();  
+    const handleClick = () => {
+      navigate('/')
+    }
   return (
     <div className={`sidebar ${visiblity?'open':''}`}>
        <div className="top">
-        <div className={`sidebar-option ${visiblity?'close':''}`}><FontAwesomeIcon icon={faHouse} /> Home</div>
+        <div className={`sidebar-option ${visiblity?'close':''}`} onClick={handleClick}><FontAwesomeIcon icon={faHouse} /> Home</div>
         <div className={`sidebar-option ${visiblity?'close':''}`} >
         <img src={shorts} className='inline-block w-5'/>    
         Shorts</div>
