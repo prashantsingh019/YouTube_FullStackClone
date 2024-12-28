@@ -12,12 +12,27 @@ import {
   faUser
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from 'react-router';
+import { useSelector,useDispatch } from "react-redux";
+import { signIn,logout } from "../redux/authSlice.js";
+
 const Navbar = ({sidebar,rightSidebar}) => {
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.userLoginStatus.isSignedIn);
+  console.log(status);
+  
   const navigate = useNavigate();  
   const handleClick = () => {
     navigate('/')
   }
-  
+
+  const handleSignIn = () => {
+    if(!status){
+      dispatch(signIn())
+      console.log('signin')
+    }else{
+      dispatch(logout());
+    }
+  }
   return (
     <nav className="h-14 flex items-center justify-between">
       {/* logo and hamburger menu */}
@@ -51,10 +66,13 @@ const Navbar = ({sidebar,rightSidebar}) => {
         <div className="user rounded-full px-3 py-2">
         <FontAwesomeIcon icon={faBell}/>
          </div>
-       
-         <div className="user rounded-full px-3 py-2 bg-gray-200 cursor-pointer" onClick={rightSidebar}>
-         <FontAwesomeIcon icon={faUser} />
-         </div>
+         {
+          status? <div className="user rounded-full px-3 py-2 bg-gray-200 cursor-pointer" onClick={rightSidebar}>
+          <FontAwesomeIcon icon={faUser} /> 
+          </div>: <button className="border text-blue-600 rounded-2xl" onClick={handleSignIn}> <FontAwesomeIcon icon={faUser} />  Sign In</button>
+         }
+        
+        
         </div>
         </section>
     </nav>
