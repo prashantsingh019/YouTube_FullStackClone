@@ -15,8 +15,14 @@ import feedback from "../assets/questionnaire-line.svg"
 import gear from "../assets/settings-3-fill.svg"
 import global from "../assets/global-fill.svg"
 import keyboard from "../assets/keyboard-box-fill.svg"
+import { useNavigate } from "react-router";
 
-const UserSidebar = ({visiblity}) => {
+const UserSidebar = ({visiblity,fn}) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+     navigate('/channel+page')
+     fn(!visiblity)
+  }
   return (
     <div className={`text-[16px] absolute  bg-white right-sidebar ${visiblity?'open-right':''}`}>
       <div className="upper flex gap-1">
@@ -26,7 +32,7 @@ const UserSidebar = ({visiblity}) => {
         <div className="user-details flex-1">
           <div className="user-name">Prashant Singh</div>
           <div className="channel-handle">@PrashantSingh-n7y</div>
-          <div className="channel-link text-sky-300">View your channel</div>
+          <div className="channel-link text-sky-300 cursor-pointer" onClick={handleClick}>View your channel</div>
         </div>
       </div>
       <div className="lower text-[.87em]">
