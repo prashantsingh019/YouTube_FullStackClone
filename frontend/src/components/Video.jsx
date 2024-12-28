@@ -11,8 +11,8 @@ const Video = ({data}) => {
     navigate('/watch')
   }
   return (
-    <div className='w-[30%] shadow-lg cursor-pointer' onClick={handleClick}>
-       <div className="thumbnail">
+    <div className='shadow-lg cursor-pointer flex flex-col items-center gap-2 p-1' onClick={handleClick}>
+       <div className="thumbnail rounded-xl overflow-hidden">
           <img src={`https://raw.githubusercontent.com/prashantsingh019/YouTube_FullStackClone/refs/heads/main/frontend/src/assets/YT-DummyVideo/${data}`}/>
           
        </div>
