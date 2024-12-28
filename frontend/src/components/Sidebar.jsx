@@ -18,11 +18,16 @@ const Sidebar = ({visiblity}) => {
   return (
     <div className={`sidebar ${visiblity?'open':''}`}>
        <div className="top">
-        <div className={`sidebar-option ${visiblity?'close':''}`} onClick={handleClick}><FontAwesomeIcon icon={faHouse} /> Home</div>
+        <div className={`sidebar-option ${visiblity?'close':''}`} onClick={handleClick}><FontAwesomeIcon icon={faHouse} />
+         <span className="text-hide">Home</span>
+         </div>  
         <div className={`sidebar-option ${visiblity?'close':''}`} >
         <img src={shorts} className='inline-block w-5'/>    
-        Shorts</div>
-        <div className={`sidebar-option ${visiblity?'close':''}`} > <img src={subscription} className='inline-block w-5'/>    Subscriptions</div>
+        <span className="text-hide">Shorts</span>
+        </div>
+        <div className={`sidebar-option ${visiblity?'close':''}`} > <img src={subscription} className='inline-block w-5'/>
+           <span className="text-hide">Subscriptions</span>
+        </div>
        </div>
        <div className={`middle ${visiblity?'hide':''}`}>
         <div>You&nbsp;&nbsp;<FontAwesomeIcon icon={faGreaterThan} className='text-sm font-thin'/></div>
