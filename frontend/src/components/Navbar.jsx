@@ -58,14 +58,15 @@ const Navbar = ({sidebar,rightSidebar}) => {
 
       </section>
       <section className="h-14 flex gap-10">
-        <button className="bg-gray-200 p-2 rounded-xl flex gap-2 items-center">
+        {status?<button className="bg-gray-200 p-2 rounded-xl flex gap-2 items-center">
           <FontAwesomeIcon icon={faPlus} />
           Create
-        </button>
+        </button>:''}
         <div className="flex items-center gap-5">
-        <div className="user rounded-full px-3 py-2">
+        {status? <div className="user rounded-full px-3 py-2">
         <FontAwesomeIcon icon={faBell}/>
-         </div>
+         </div>:''}
+       
          {
           status? <div className="user rounded-full px-3 py-2 bg-gray-200 cursor-pointer" onClick={rightSidebar}>
           <FontAwesomeIcon icon={faUser} /> 
