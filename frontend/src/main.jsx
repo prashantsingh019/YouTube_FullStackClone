@@ -6,6 +6,7 @@ import {createBrowserRouter,RouterProvider} from "react-router"
 import Gallery from './components/Gallery.jsx'
 import VideoPage from './components/VideoPage.jsx'
 import UserSidebar from './components/userSidebar.jsx'
+import ChannelPage from './components/ChannelPage.jsx'
 
 
 const routes = createBrowserRouter([
@@ -24,7 +25,11 @@ const routes = createBrowserRouter([
       {
         path:'/sidebar',
         element:<UserSidebar/>
-      }
+      },
+      {
+        path:'/channel+page',
+        element:<ChannelPage/>
+      },
 
     ]
   }
