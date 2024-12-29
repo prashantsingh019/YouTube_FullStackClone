@@ -165,3 +165,11 @@ div button {
     align-items: center;
     padding: 20px;
 }
+
+.input-field{
+  width: 100%;
+  padding: 5px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid pink;
+}
