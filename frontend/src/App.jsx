@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import "./App.css"
 import Sidebar from './components/Sidebar'
-import UserSidebar from './components/userSidebar'
+import UserSidebar from './components/UserSidebar.jsx'
 import { Outlet } from 'react-router'
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+
 const App = () => {
   const [isSidebarOpen,setSidebar] = useState(true);
   const [isRightSidebarOpen,setRightSidebar] = useState(false);
@@ -25,6 +26,7 @@ const App = () => {
          <Sidebar visiblity={isSidebarOpen}/>
          <Outlet/>
          <UserSidebar visiblity={isRightSidebarOpen} fn={setRightSidebar}/>
+       
        </div>    
     </div>
     </Provider>
