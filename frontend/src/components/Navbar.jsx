@@ -29,6 +29,7 @@ const Navbar = ({sidebar,rightSidebar}) => {
     if(!status){
       dispatch(signIn())
       console.log('signin')
+      navigate('/login')
     }else{
       dispatch(logout());
     }
