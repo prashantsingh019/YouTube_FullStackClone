@@ -1,19 +1,19 @@
 import React from 'react'
-import thumbnail from "../assets/YT-DummyVideo/Video1.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import "./component.css";
 import { useNavigate } from 'react-router';
 
-const Video = ({data}) => {
+const Video = ({data,baseUrl}) => {
   const navigate = useNavigate();  
   const handleClick = () => {
-    navigate('/watch')
+    navigate(`/watch/${data.videoId}`)
   }
   return (
     <div className='shadow-lg cursor-pointer flex flex-col items-center gap-2 p-1' onClick={handleClick}>
        <div className="thumbnail rounded-xl overflow-hidden">
-          <img src={`https://raw.githubusercontent.com/prashantsingh019/YouTube_FullStackClone/refs/heads/main/frontend/src/assets/YT-DummyVideo/${data}`}/>
+          <img src={`${baseUrl}${data.thumbnailUrl}.png`}/>
+       
           
        </div>
        <div className="details flex w-[100%] gap-5">
@@ -21,10 +21,10 @@ const Video = ({data}) => {
            <FontAwesomeIcon icon={faUser} className='bg-slate-200 p-3 rounded-full'/>
          </div>
          <div className="video-details ">
-            <h3>MERN Stack vs Java Stack which one to choose in 2025</h3>
-            <h2>The Techie Town</h2>
+            <h3>{data.title}</h3>
+            <h2>{data.channelName}</h2>
             <h2>
-              <span>7.9k views • </span>
+              <span>{data.view} views • </span>
               <span>5 days ago</span>
             </h2>
          </div>
