@@ -16,6 +16,7 @@ import gear from "../assets/settings-3-fill.svg"
 import global from "../assets/global-fill.svg"
 import keyboard from "../assets/keyboard-box-fill.svg"
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const UserSidebar = ({visiblity,fn}) => {
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ const UserSidebar = ({visiblity,fn}) => {
      navigate('/channel+page')
      fn(!visiblity)
   }
+  const user = useSelector((state) => state.currentUser.currentUser);
+  
   return (
     <div className={`text-[16px] absolute  bg-white right-sidebar ${visiblity?'open-right':''}`}>
       <div className="upper flex gap-1">
@@ -30,8 +33,8 @@ const UserSidebar = ({visiblity,fn}) => {
         <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-2 bg-gray-200'/>
         </div>
         <div className="user-details flex-1">
-          <div className="user-name">Prashant Singh</div>
-          <div className="channel-handle">@PrashantSingh-n7y</div>
+          <div className="user-name">{user}</div>
+          <div className="channel-handle">@{user}-14</div>
           <div className="channel-link text-sky-300 cursor-pointer" onClick={handleClick}>View your channel</div>
         </div>
       </div>
