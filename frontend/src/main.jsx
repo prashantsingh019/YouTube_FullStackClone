@@ -20,7 +20,7 @@ const routes = createBrowserRouter([
         element:<Gallery/>
       },
       {
-        path:'/watch',
+        path:'/watch/:id',
         element:<VideoPage/>
       },
       {
