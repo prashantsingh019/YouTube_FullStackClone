@@ -11,12 +11,5 @@ export const youtubeTags = [
     "Learn TailwindCSS",
   ];
   
-
-  export const videosThumbnail = [
-    "Video1.png",
-    "Video2.png",
-    "Video3.png",
-    "Video4.png",
-    "Video5.png",
-    "Video6.png",
-  ]
+   export const baseUrl = "https://raw.githubusercontent.com/prashantsingh019/dummyData/refs/heads/main/";
+  
