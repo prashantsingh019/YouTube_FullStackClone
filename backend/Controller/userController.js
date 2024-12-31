@@ -1,13 +1,13 @@
 import userModel from "../Model/usersModel.js";
-
+import brcypt from "bcrypt"
 export const registerNewUser = async (req,res) => {
     try{
         const{userId, username,email,password,avatar,channels} = req.body;
+        
         const newUser = new userModel({
-            userId, 
             username,
             email,
-            password,
+            password:brcypt.hashSync(password,10),
             avatar,
             channels
         })

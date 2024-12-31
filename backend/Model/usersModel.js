@@ -3,10 +3,6 @@ import mongoose from "mongoose"
 const {Schema,model} = mongoose;
 
 const userSchema = Schema({
- userId:{
-    type:String,
-    required:true,
- }  ,
  username:{
     type:String,
     required:true,
@@ -14,14 +10,14 @@ const userSchema = Schema({
  email:{
     type:String,
     required:true,
- }   ,
+ },
  password:{
     type:String,
     required:true,
  },
  avatar:{
     type:String,
-    required:true,
+    required:false,
  },
  channels:{
     type:[],
