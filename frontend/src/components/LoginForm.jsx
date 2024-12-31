@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import google from "../assets/google_color.svg"
 import { useNavigate } from "react-router";
+import { useDispatch } from 'react-redux';
+import {login} from "../redux/userLogged.js"
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [formType,setFormType]= useState("login")
   const blankForm = {
     name:'',
@@ -36,6 +39,8 @@ const LoginForm = () => {
    }
 
   console.log(formData);
+   
+   dispatch(login(formData.name))
    setFormData(blankForm)
    navigate('/')
  }
