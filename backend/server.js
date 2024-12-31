@@ -1,9 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import { routes } from "./Routes/videoRoutes.js";
+
+
 const app = express();
 const port = 3000;
 import cors from "cors"
+import { userRoutes } from "./Routes/userRoutes.js";
 app.use(express.json())
 app.use(cors())
 app.listen(port,() => {
@@ -22,3 +25,4 @@ dataBase.on('error',()=>{
 
 
 routes(app)
+userRoutes(app)
