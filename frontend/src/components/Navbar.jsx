@@ -3,7 +3,7 @@ import YouTube from "../assets/yt-icon.png";
 import "./component.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCoffee,
+  
   faBars,
   faMagnifyingGlass,
   faMicrophone,
@@ -18,8 +18,7 @@ import { signIn,logout } from "../redux/authSlice.js";
 const Navbar = ({sidebar,rightSidebar}) => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.userLoginStatus.isSignedIn);
-  console.log(status);
-  
+
   const navigate = useNavigate();  
   const handleClick = () => {
     navigate('/')
