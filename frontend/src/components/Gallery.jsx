@@ -44,7 +44,7 @@ const Gallery = () => {
             })
         }
       </div>
-       <div className="video-gallery gap-10 border p-[0.5rem] text-lg">
+       <div className="video-gallery border p-[0.5rem] text-lg flex flex-wrap ">
         
         {select ? select.map((video) => {
           return  <Video data={video} baseUrl={baseUrl} key={video._id}/>
