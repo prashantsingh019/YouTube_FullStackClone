@@ -7,6 +7,7 @@ const app = express();
 const port = 3000;
 import cors from "cors"
 import { userRoutes } from "./Routes/userRoutes.js";
+import { channelRoutes } from "./Routes/channelRoutes.js";
 app.use(express.json())
 app.use(cors())
 app.listen(port,() => {
@@ -26,3 +27,4 @@ dataBase.on('error',()=>{
 
 routes(app)
 userRoutes(app)
+channelRoutes(app)
