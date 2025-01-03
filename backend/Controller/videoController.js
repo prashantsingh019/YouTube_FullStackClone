@@ -10,7 +10,7 @@ export const getVideos = async (req,res) => {
 }
 export const addVideo = async (req,res) => {
    try{
-      const {videoId,title,thumbnailUrl,description,channelId,channelName,view,likes,dislikes,comments} = req.body;
+      const {videoId,title,thumbnailUrl,description,channelId,channelName,view,likes,dislikes,comments, category} = req.body;
       const newVideo = new videoModel({
          videoId,
          title,
@@ -21,7 +21,8 @@ export const addVideo = async (req,res) => {
          view,
          likes,
          dislikes,
-         comments
+         comments,
+         category
       })
       await newVideo.save()
       res.status(201).json({message:"new video uploaded"})
@@ -54,8 +55,7 @@ export const addComment = async (req,res) => {
          commentDate:new Date()
        })
        await video.save()
-       console.log(video.comments);
-       res.status(200).json(video.comments);
+      res.status(200).json(video.comments);
    }catch(error){
       res.status(500).json({message:"Internal Server Error"})
    }
@@ -73,3 +73,17 @@ export const editField = async(req,res) => {
      res.status(500).json({message:"Internal Server Error"})
    }
 }
+
+
+export const likeVideo = async(req,res) => {
+   try{
+      const {id} = req.body;
+      const getVideo = await videoModel.findOne({videoId:id})
+      getVideo.likes += 1;
+      await getVideo.save()
+      res.status(200).json({likes: getVideo.likes });
+   }catch(error){
+      res.status(500).json({message:"Internal Server Error"})
+   }
+}
+
