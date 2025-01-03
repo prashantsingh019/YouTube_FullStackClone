@@ -27,7 +27,7 @@ export const loginUser = async (req,res) => {
         if(!findUser) return res.status(404).json({message:"user not found please register"})
         const isValid = await brcypt.compare(password,findUser.password);
         if(!isValid) return res.status(400).json({message:"entered password is incorrect"});
-        let token = jwt.sign({id:findUser["_id"]},"HASHNODE",{expiresIn:"10m"});
+        let token = jwt.sign({id:findUser["_id"]},"HASHNODE",{expiresIn:"7d"});
         res.status(200).json({
             user:{
                 email: findUser.email,
