@@ -1,10 +1,13 @@
-import { configureStore, createSlice, current } from '@reduxjs/toolkit';
+import { configureStore} from '@reduxjs/toolkit';
 import { authSlice } from './authSlice.js';
-import { userLogin } from './userLogged.js';
+import { visiblitySlice } from './componentSlice.js';
+import { dataSlice } from './dataSlice.js';
+
 export const store = configureStore({
     reducer:{
        userLoginStatus:authSlice.reducer,
-       currentUser:userLogin.reducer,
+       visible:visiblitySlice.reducer,
+       data:dataSlice.reducer
        }
 })
 
