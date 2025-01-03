@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const {Schema,model} = mongoose;
 
 const channelSchema =  Schema({
-    channelId:{
+    channelId   :{
         type:String,
         required:true
     },  
@@ -11,23 +11,23 @@ const channelSchema =  Schema({
         type:String,
         required:true
     },
-    owner         :{
+    channelEmail  :{
         type:String,
-        required:true
+        required:false
     },
     description   :{
         type:String,
-        required:true
+        required:false
     },
     channelBanner :{
         type:String,
-        required:true
+        required:false,
     },
     subscribers:{
         type:Number,
-        required:true
+        default:0
     },
-    videos:["video01","video02"]
+    videos:["1OAjeECW90E"]
 })
 
 const channelModel = model('channel',channelSchema);
