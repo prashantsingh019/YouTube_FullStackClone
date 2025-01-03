@@ -56,7 +56,11 @@ const videoSchema = Schema({
         type:Date,
         default:Date.now
     },
-    comments:[commentSchema]
+    comments:[commentSchema],
+    category:{
+        type:String,
+        default:false
+    }
 })
 
 const videoModel = model("video",videoSchema);
