@@ -10,7 +10,7 @@ const Video = ({data,baseUrl}) => {
     navigate(`/watch/${data.videoId}`)
   }
   return (
-    <div className='flex flex-col gap-3 cursor-pointer w-[390px]' onClick={handleClick}>
+    <div className='flex flex-col gap-3 cursor-pointer md:w-[250px] lg:w-full' onClick={handleClick}>
        <div className="thumbnail rounded-xl overflow-hidden">
           <img src={`${baseUrl}${data.thumbnailUrl}.png`} className='w-[100%]'/>
        
@@ -18,9 +18,9 @@ const Video = ({data,baseUrl}) => {
        </div>
        <div className="details flex items-center gap-1">
          <div className="channel-icon px-1">
-           <FontAwesomeIcon icon={faUser} className='bg-slate-200 p-3 rounded-full'/>
+           <FontAwesomeIcon icon={faUser} className=' p-3 rounded-full'/>
          </div>
-         <div className="video-details mt-2">
+         <div className="video-details flex-wrap mt-2">
             <h3>{data.title}</h3>
             <h2>{data.channelName}</h2>
             <h2>
