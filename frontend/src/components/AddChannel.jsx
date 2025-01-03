@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const CreateChannelForm = () => {
@@ -18,11 +19,17 @@ const CreateChannelForm = () => {
     const handleFileChange = (e) => {
         setFormData({ ...formData, channelBanner: e.target.files[0] });
     };
-
+    const payload = {
+        ...formData,
+        subscribers: subscribers || 0, // Default to 0 if not set
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission logic (e.g., API call)
-        console.log("Form Data Submitted: ", formData, { subscribers });
+        console.log("Form Data Submitted: ", payload);
+        axios.post(`http://localhost:3000/channel/create`,payload)
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
     };
 
     return (

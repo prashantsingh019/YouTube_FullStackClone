@@ -12,18 +12,22 @@ import dots from "../assets/three-dots.svg";
 import emoji from "../assets/emoji.svg";
 import Comment from "./Comment";
 import VideoCard from "./VideoCard";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { baseUrl } from "../utils/dummyData";
 
 const VideoPage = () => {
-  const user = useSelector((state) => state.currentUser.currentUser);
+  const dataOfVideos = useSelector((state) => state.data.videos);
+ 
+  
+  const user = useSelector((state) => state.userLoginStatus.isSignedIn);
   const [data, setData] = useState([]);
   const [content, setContent] = useState(" ");
   const [userComment,setComment] = useState([])
   const params = useParams();
   const { id } = params;
-  user, console.log(id);
+  const [likes,setLikes] = useState(0)
   useEffect(() => {
     
     window.scrollTo(0, 0);
@@ -31,16 +35,26 @@ const VideoPage = () => {
       .get(`http://localhost:3000/watch/${id}`)
       .then((res) => {
         setComment(res.data.comments || [])
-        setData(res.data)})
+        setData(res.data)
+        setLikes(res.data.likes || 0)
+      })
       .catch((error) => console.error(error));
   }, []);
   
+  const token = localStorage.getItem("token");
 
   const handleClick = () => {
     axios
-      .post(`http://localhost:3000/watch/${id}`, { user, content })
-      .then((res) => setComment(res.data.comments));
+      .post(`http://localhost:3000/watch/${id}`,{ user, content })
+      .then((res) => setComment(res.data));
   };
+  
+  const handleLike = () => {
+    axios.post(`http://localhost:3000/video/like`,{id})
+    .then(res => setLikes(res.data.likes))
+    .catch(err => console.error(err))
+    }
+  console.log(likes)
   return (
     <div className="flex">
       <div className="left-side w-[590px]">
@@ -76,12 +90,12 @@ const VideoPage = () => {
             </div>
             <div className="right-middle flex gap-8 items-center p-1">
               <div className="rounded-2xl overflow-hidden">
-                <button>
+                <button onClick={handleLike}>
                   <img
                     src={like}
                     className="inline-block w-7 border-r-gray-400 border-solid"
                   />{" "}
-                  {data.likes}
+                  {likes}
                 </button>
                 &nbsp;
                 <button>
@@ -98,7 +112,7 @@ const VideoPage = () => {
           </div>
           <div className="discription bg-violet-100 mt-2">
             <div className="dis-top flex gap-2 font-bold text-lg">
-              <span>{data.view} views</span>
+              <span>{data.view > 1000000 ? `${(data.view / 1000000).toFixed(1)}M` : `${(data.view / 1000).toFixed(0)}K` } views</span>
               <span>4 days ago</span>
               <span>#SiliconValley #GoogleIndia #workvlog</span>
             </div>
@@ -147,7 +161,7 @@ const VideoPage = () => {
                   </div>
                 </section>
               </div>
-              {console.log(userComment)}
+             
               
               {Array.isArray(userComment) && userComment.length > 0 ? (
                 userComment.map((comment) => (
@@ -163,24 +177,9 @@ const VideoPage = () => {
       </div>
 
       <div className="right-side p-1 flex-col flex gap-1">
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+      {dataOfVideos.map((video) => {
+          return  <VideoCard data={video} baseUrl={baseUrl} key={video._id}/>
+        })}
       </div>
     </div>
   );

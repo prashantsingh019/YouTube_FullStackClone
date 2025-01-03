@@ -1,48 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Video from "./Video";
+import { useParams } from "react-router";
+import axios from "axios";
+import { baseUrl } from "../utils/dummyData";
+import { useSelector } from "react-redux";
 function ChannelPage() {
-  const [isSelected, setSelected] = useState("Home");
+  const [isSelected, setSelected] = useState("Videos");
+  const [apiData, setData] = useState({});
+  const [channelvideo, setVideos] = useState([]);
+  const { channelEmail } = useParams();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/channel?channelEmail=${channelEmail}`)
+      .then((res) => {
+        setData(res.data);
+        getVideo(res.data.channelId);
+   });
+  }, [channelEmail]);
+
+  const getVideo = (id) => {
+  axios.get(`http://localhost:3000/channel/video?channelId=${id}`)
+  .then((res) => setVideos(res.data))
+  .catch((error) => console.log(error))
+    
+  }
+  
   return (
     <div>
       <div className="cover-image p-2 rounded-xl overflow-hidden">
         <img
-          src={
-            "https://yt3.googleusercontent.com/4gtkJoXUhDrDo9nTiBDEh3sv69vdkOSMC4PGaxQc4gzvQpY-MPt5LIbn8icYIkKOyhh6-GCneQ=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj"
-          }
+          src={apiData.channelBanner}
           alt=""
-          srcset=""
           className="h-64  p-2 rounded-3xl"
         />
       </div>
       <div className="channel-info flex gap-10 m-10">
-        <div className="channel-dp h-48 max-w-96 w-96 bg-cyan-600 rounded-full overflow-hidden">
+        <div className="channel-dp  bg-cyan-600 rounded-full overflow-hidden flex justify-center">
           <img
             src={
               "https://yt3.googleusercontent.com/evQnIYEMKtYO15-3nMh58lEHH_ZnXz6SiCRzmaQDGtO8Hvjdvl_7Q9c_lgotqi0iUi9UnRq3xKY=s160-c-k-c0x00ffffff-no-rj"
             }
-            alt=""
-            srcset=""
-            className="bg-cover "
+            className="w-[100%] h-[100%] object-cover"
           />
         </div>
         <div className="channel-info flex flex-col items-start gap-1">
-          <div className="text-5xl">CodingHunger</div>
+          <div className="text-5xl">{apiData.channelName}</div>
           <div className="flex gap-1 p-1">
-            <span>@CodingHunger</span>•
-            <span className="text-gray-500">1.51K subscriber</span>•
-            <span className="text-gray-500">210 videos</span>
+            <span>{`@${apiData.channelName}-14`}</span>•
+            <span className="text-gray-500">
+              {apiData.subscribers > 1000000
+                ? `${(apiData.subscribers / 1000000).toFixed(1)} M`
+                : `${(apiData.subscribers / 1000).toFixed(0)} K`}{" "}
+              subscriber
+            </span>
+            •
+            <span className="text-gray-500">
+              {" "}
+              {apiData && apiData.videos
+                ? `${apiData.videos.length} videos`
+                : "Loading..."}
+            </span>
           </div>
           <div>
-            <p className="pr-9">
-              Hii guys , I am Mashhood Ahmad Danish from India 🇮🇳. Currently
-              working for a MNC as a Software Engineer. Starting this channel to
-              help student in making projects for their final year and which
-              will help them to grab their dream job. I will try to build
-              projects in various domain. Main Focus will be on MERN Full Stack.
-              So get ready .
-            </p>
+            <p className="pr-9">{apiData.desciption}</p>
           </div>
           <button className="px-3 py-2 bg-gray-950 text-white rounded-3xl hover:bg-gray-500">
             Subscribe
@@ -61,7 +83,7 @@ function ChannelPage() {
             className={`${isSelected == "Videos" ? "isSelectedClass" : ""}`}
             onClick={() => setSelected("Videos")}
           >
-            Videos
+            <button>Videos</button>
           </span>
           <span
             className={`${isSelected == "Shorts" ? "isSelectedClass" : ""}`}
@@ -85,20 +107,17 @@ function ChannelPage() {
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </span>
         </div>
-         <div className="videos">
+        <div className="videos">
           <div>Popular videos</div>
-          <section className="video-container p-1 text-sm">
-            <Video data={`Video1.png`}/>
-            <Video data={`Video2.png`}/>
-            <Video data={`Video3.png`}/>
-            <Video data={`Video4.png`}/>
-            <Video data={`Video5.png`}/>
-            <Video data={`Video6.png`}/>
-            <Video data={`Video4.png`}/>
-            <Video data={`Video5.png`}/>
-            <Video data={`Video6.png`}/>
+          <section className="video-container p-1 text-sm flex justify-evenly items-center">
+            {   
+             channelvideo.length > 0 ? (
+              channelvideo.map((video,index) => {
+                 return  <Video data={video} baseUrl={baseUrl} key={index}/>
+               })):(<h1>No Videos found</h1>)
+}
           </section>
-         </div>
+        </div>
       </div>
     </div>
   );

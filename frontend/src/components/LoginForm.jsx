@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import google from "../assets/google_color.svg";
 import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
-import { login } from "../redux/userLogged.js";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { signIn } from "../redux/authSlice";
+
 const LoginForm = () => {
   const [formType, setFormType] = useState("login");
   const dispatch = useDispatch();
   const blankForm = {
-    name: "",
+    username: "",
     email: "",
     password: "",
   };
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -25,30 +26,40 @@ const LoginForm = () => {
     }));
   };
   const navigate = useNavigate();
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
 
-    if (
-      formData.name == "" ||
-      formData.email == "" ||
-      formData.password == ""
-    ) {
-      setFormData(blankForm);
-      alert("all fields are required");
+    if(formType == "login"){
+        const {email,password} = formData;
+        if(email == " " || password == " "){
+         alert("All fields are required")
+       }else{
+          
+          const response = await axios.post("http://localhost:3000/login",{email,password})
+          const {user,accestoken} = response.data;
+          localStorage.setItem('user',JSON.stringify(user));
+          localStorage.setItem('token',accestoken);
+          dispatch(signIn(user));
+          setFormData(blankForm);
+          alert("Login successful");
+          navigate("/");
+       }
 
-      return;
+    }else{
+ 
+  if (formData.username == "" ||formData.email == "" ||formData.password == "") 
+  {
+  setFormData(blankForm);
+  alert("all fields are required");
+  return;
+  }
+
+     await axios.post("http://localhost:3000/register",formData)
+    .then((res) => alert("user added sucessfully"))
+    .catch((err) => console.error(err));
+     setFormData(blankForm);
+     setFormType("login");
     }
-    if (formType === "login") {
-      
-    }
-    if (formType === "signup") {
-      axios.post('http://localhost:3000/register/',formData)
-      .then((res) => console.log("user added sucessfully"))
-      .catch((err) => console.error(err))
-     }
-    dispatch(login(formData.name));
-    setFormData(blankForm);
-    navigate("/");
-  };
+ }
 
   return (
     <div className=" w-96 p-5 flex flex-col gap-2 mx-auto mt-10">
@@ -63,11 +74,11 @@ const LoginForm = () => {
             <label htmlFor="fullname">Full Name</label>
             <input
               type="text"
-              name="name"
+              name="username"
               className="input-field"
               placeholder="for ex:John"
               onChange={handleDataInput}
-              value={formData.name}
+              value={formData.username}
               required
             />
           </div>

@@ -8,6 +8,10 @@ import VideoPage from './components/VideoPage.jsx'
 import ChannelPage from './components/ChannelPage.jsx'
 import LoginForm from './components/LoginForm.jsx'
 import UserSidebar from './components/UserSidebar.jsx'
+import { store } from './redux/store.js'
+import { Provider } from 'react-redux'
+import AddChannel from './components/AddChannel.jsx'
+import ErrorPage from './components/ErrorPage.jsx'
 
 
 const routes = createBrowserRouter([
@@ -28,19 +32,26 @@ const routes = createBrowserRouter([
         element:<UserSidebar/>
       },
       {
-        path:'/channel+page',
+        path:'/channel+page/:channelEmail',
         element:<ChannelPage/>
       },
       {
         path:'/login',
         element:<LoginForm/>
       },
+      {
+        path:'/create-channel',
+        element:<AddChannel/>
+      },
 
-    ]
+    ],
+    errorElement:<ErrorPage/>
   }
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Provider store={store}>
     <RouterProvider router={routes}/>
+    </Provider>
   </StrictMode>,
 )

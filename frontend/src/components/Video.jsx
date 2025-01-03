@@ -10,21 +10,21 @@ const Video = ({data,baseUrl}) => {
     navigate(`/watch/${data.videoId}`)
   }
   return (
-    <div className='shadow-lg cursor-pointer flex flex-col items-center gap-2 p-1' onClick={handleClick}>
+    <div className='flex flex-col gap-3 cursor-pointer w-[390px]' onClick={handleClick}>
        <div className="thumbnail rounded-xl overflow-hidden">
-          <img src={`${baseUrl}${data.thumbnailUrl}.png`}/>
+          <img src={`${baseUrl}${data.thumbnailUrl}.png`} className='w-[100%]'/>
        
           
        </div>
-       <div className="details flex w-[100%] gap-5">
+       <div className="details flex items-center gap-1">
          <div className="channel-icon px-1">
            <FontAwesomeIcon icon={faUser} className='bg-slate-200 p-3 rounded-full'/>
          </div>
-         <div className="video-details ">
+         <div className="video-details mt-2">
             <h3>{data.title}</h3>
             <h2>{data.channelName}</h2>
             <h2>
-              <span>{data.view} views • </span>
+              <span>{data.view > 1000000 ? `${(data.view / 1000000).toFixed(1)}M` : `${(data.view / 1000).toFixed(0)}K` }  views • </span>
               <span>5 days ago</span>
             </h2>
          </div>

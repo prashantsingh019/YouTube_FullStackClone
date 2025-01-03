@@ -16,18 +16,29 @@ import gear from "../assets/settings-3-fill.svg"
 import global from "../assets/global-fill.svg"
 import keyboard from "../assets/keyboard-box-fill.svg"
 import { useNavigate } from "react-router";
-import { useSelector } from "react-redux";
-
-const UserSidebar = ({visiblity,fn}) => {
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/authSlice";
+import { setAppear } from "../redux/componentSlice";
+const UserSidebar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const hideAndShow = useSelector((state) => state.visible.value);
+ 
+  const channelEmail = JSON.parse(localStorage.getItem("user"))?.email || "example@gmail.com";
   const handleClick = () => {
-     navigate('/channel+page')
-     fn(!visiblity)
+   navigate(`/channel+page/${channelEmail}`)
   }
-  const user = useSelector((state) => state.currentUser.currentUser);
-  
-  return (
-    <div className={`text-[16px] absolute  bg-white right-sidebar ${visiblity?'open-right':''}`}>
+  const user = useSelector((state) => state.userLoginStatus?.user || "Guest");
+  const handleSignOut = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    alert("logout successfull")
+    navigate("/login");
+    dispatch(logout());
+    dispatch(setAppear());
+  }
+ return (
+    <div className={`text-[16px] absolute  bg-white right-sidebar ${hideAndShow?'open-right':''}`}>
       <div className="upper flex gap-1">
         <div className="user-icon flex justify-center p-1">
         <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-2 bg-gray-200'/>
@@ -42,7 +53,7 @@ const UserSidebar = ({visiblity,fn}) => {
         <section>
           <div className="below-user-settings"><img src={google} className='inline-block w-6'/>  Google Account</div>
           <div className="below-user-settings"><img src={switchUser} className='inline-block w-6'/>  Switch Account</div>
-          <div className="below-user-settings"><img src={signOut} className='inline-block w-6'/>  Sign out</div>
+          <div className="below-user-settings" onClick={handleSignOut}><img src={signOut} className='inline-block w-6'/>  Sign out</div>
         </section>
         <section>
           <div className="below-user-settings"><img src={studio} className='inline-block w-6'/>  YouTube Studio</div>
