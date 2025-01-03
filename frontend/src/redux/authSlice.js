@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const authSlice = createSlice({
     name:'auth',
     initialState:{
-        isSignedIn:false,
+        isSignedIn:null,
     },
     reducers:{
-       signIn:(state)=>{
-        state.isSignedIn = true;
+       signIn:(state,action)=>{
+        state.isSignedIn = action.payload;
        },
        logout:(state)=>{
         state.isSignedIn = false;
