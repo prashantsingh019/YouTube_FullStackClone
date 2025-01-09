@@ -40,14 +40,14 @@ const Navbar = ({sidebar}) => {
   return (
     <nav className="h-14 flex items-center justify-between">
       {/* logo and hamburger menu */}
-         <section className="h-14">
+         <section className="h-14 logo-section">
          <FontAwesomeIcon icon={faBars} onClick={sidebar} className="cursor-pointer"/>
          <div className="logo h-[100%] flex items-center gap-1 font-serif font-boldest" onClick={handleClick}>
          <img src={YouTube} alt="_YouTube Icon" id="icon-main" />
          YouTube <sup className="text-sm">IN</sup>
         </div>
       </section>
-      <section className="h-14">
+      <section className="h-14 flex gap-1">
 
       <div className="search-sect">
        <input type="text" name="" id="searchbar" placeholder="Search" value={search}  onChange={(e) => setSearch(e.target.value)}/>
@@ -61,12 +61,12 @@ const Navbar = ({sidebar}) => {
        </div>
 
       </section>
-      <section className="h-14 flex gap-10">
-        {status?<button className="bg-gray-200 p-2 rounded-xl flex gap-2 items-center" onClick={handleChannelCreate}>
+      <section className="h-14 flex gap-10 top-right-nav">
+        {status?<button className="bg-gray-200 p-2 rounded-xl flex items-center btn-create" onClick={handleChannelCreate}>
           <FontAwesomeIcon icon={faPlus} />
           Create
         </button>:''}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 user-section">
         {status? <div className="user rounded-full px-3 py-2">
         <FontAwesomeIcon icon={faBell}/>
          </div>:''}
