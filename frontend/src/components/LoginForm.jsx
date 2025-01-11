@@ -26,40 +26,45 @@ const LoginForm = () => {
     }));
   };
   const navigate = useNavigate();
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
+    if (formType == "login") {
+      const { email, password } = formData;
+      if (email == " " || password == " ") {
+        alert("All fields are required");
+      } else {
+        const response = await axios.post("http://localhost:3000/login", {
+          email,
+          password,
+        });
+        const { user, accestoken } = response.data;
 
-    if(formType == "login"){
-        const {email,password} = formData;
-        if(email == " " || password == " "){
-         alert("All fields are required")
-       }else{
-          
-          const response = await axios.post("http://localhost:3000/login",{email,password})
-          const {user,accestoken} = response.data;
-          localStorage.setItem('user',JSON.stringify(user));
-          localStorage.setItem('token',accestoken);
-          dispatch(signIn(user));
-          setFormData(blankForm);
-          alert("Login successful");
-          navigate("/");
-       }
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", accestoken);
 
-    }else{
- 
-  if (formData.username == "" ||formData.email == "" ||formData.password == "") 
-  {
-  setFormData(blankForm);
-  alert("all fields are required");
-  return;
-  }
+        dispatch(signIn(user.username));
+        setFormData(blankForm);
+        alert("Login successful");
+        navigate("/");
+      }
+    } else {
+      if (
+        formData.username == "" ||
+        formData.email == "" ||
+        formData.password == ""
+      ) {
+        setFormData(blankForm);
+        alert("all fields are required");
+        return;
+      }
 
-     await axios.post("http://localhost:3000/register",formData)
-    .then((res) => alert("user added sucessfully"))
-    .catch((err) => console.error(err));
-     setFormData(blankForm);
-     setFormType("login");
+      await axios
+        .post("http://localhost:3000/register", formData)
+        .then((res) => alert("user added sucessfully"))
+        .catch((err) => console.error(err));
+      setFormData(blankForm);
+      setFormType("login");
     }
- }
+  };
 
   return (
     <div className=" w-96 p-5 flex flex-col gap-2 mx-auto mt-10">
@@ -112,7 +117,7 @@ const LoginForm = () => {
         </div>
         <div className="some-options flex justify-between">
           <span className="flex items-center gap-1">
-            <input type="checkbox" />
+            <input type="checkbox" checked />
             Remember me
           </span>
           <span className="inline-block p-5">
@@ -120,7 +125,7 @@ const LoginForm = () => {
           </span>
         </div>
         <button
-          className="bg-sky-700 w-[100%] text-white rounded-sm"
+          className="bg-sky-700 w-[100%] text-white rounded-sm active:bg-sky-500"
           onClick={handleSubmit}
         >
           {formType === "signup" ? "Sign Up" : "Login now"}
