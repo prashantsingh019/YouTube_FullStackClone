@@ -109,7 +109,7 @@ function ChannelPage() {
         </div>
         <div className="videos">
           <div>Popular videos</div>
-          <section className="video-container p-1 text-sm flex justify-evenly items-center">
+          <section className="video-container p-1 text-sm channel-gallery">
             {   
              channelvideo.length > 0 ? (
               channelvideo.map((video,index) => {
