@@ -10,7 +10,7 @@ const Video = ({data,baseUrl}) => {
     navigate(`/watch/${data.videoId}`)
   }
   return (
-    <div className='flex flex-col gap-3 cursor-pointer md:w-[250px] lg:w-full' onClick={handleClick}>
+    <div className='cursor-pointer w-25%' onClick={handleClick}>
        <div className="thumbnail rounded-xl overflow-hidden">
           <img src={`${baseUrl}${data.thumbnailUrl}.png`} className='w-[100%]'/>
        
