@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const createChannel = async (req, res) => {
   try {
     const {
-      channelEmail, channelName, description, channelBanner
+      channelEmail, channelName, description, channelBanner,channelId
     } = req.body;
     console.log(channelEmail,channelName,description,channelBanner);
     console.log(channelEmail);
@@ -14,7 +14,9 @@ export const createChannel = async (req, res) => {
     if(findChannel){
         return res.status(400).json({message:"you can't create 2 channels with same email id"})
     }
-    const channelId = uuidv4();
+    // const channelId = uuidv4();
+    const video = await videoModel.find({channelId:channelId});
+
     const newChannel = new channelModel({
        channelId,
        channelName,
@@ -22,7 +24,7 @@ export const createChannel = async (req, res) => {
        description,
        channelBanner,
        subscribers:0,
-       videos:[]
+       videos:video
      });
      await newChannel.save();
     res.status(201).json({message:"channel creation successful"})
