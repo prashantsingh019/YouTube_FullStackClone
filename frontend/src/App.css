@@ -3,3 +3,94 @@
 *{
     font-family: "Roboto", serif;
 }
+
+
+@media screen and (max-width:768px){
+    .search-sect{
+        width: 70vmin;
+        max-width: 1280px;
+    }
+}
+
+@media screen and (max-width:680px){
+    .search-sect{
+        max-width: 180px;
+        border: none;
+        padding: none;
+        
+}
+.tags{
+    /* background-color: blueviolet; */
+    width: 90vw;
+    overflow-x: auto;
+    white-space: nowrap
+}
+    .top-right-nav{
+        gap: 2px;
+        /* background-color: blue; */
+    }
+    nav{
+        /* background-color: cadetblue; */
+        font-size: 1rem;
+        padding: 0;
+    }
+    .logo-section{
+        /* background-color: chartreuse; */
+        gap: 2px;
+    }
+    .btn-create{
+        padding: 4px;
+    }
+    .user-section{
+        gap: 0;
+    }
+    #icon-main{
+        width: 80%;
+        height: 60%;
+    }
+ 
+   
+    .sidebar .sidebar-option{
+        gap: 5px;
+        /* background-color: chartreuse; */
+    }
+    .sidebar{
+        font-size: small;
+        /* justify-items: start; */
+        padding: 0;
+        gap: 0;
+    }
+    .sidebar{
+    
+        gap: 0;
+    }
+    .top,.middle,.bottom{
+        /* background-color: blueviolet; */
+        /* align-items: start; */
+        padding: 0;
+    }
+    .icon-user{
+        padding: 0;
+    }
+    .bottom .sidebar-option{
+        /* background-color: green; */
+        padding: 0;
+        font-size: smaller;
+    }
+    .hide{
+        right: 0;
+    }
+    .sign-in-btn{
+        /* background-color: aqua; */
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width:404px){
+    .search-sect{
+        max-width: 120px;
+    }
+    /* .sign-in-btn{
+        display: none;
+    } */
+}
