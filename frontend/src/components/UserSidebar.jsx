@@ -28,7 +28,7 @@ const UserSidebar = () => {
   const handleClick = () => {
    navigate(`/channel+page/${channelEmail}`)
   }
-  const user = useSelector((state) => state.userLoginStatus?.user || "Guest");
+  const user = useSelector((state) => state.userLoginStatus.isSignedIn);
   const handleSignOut = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
