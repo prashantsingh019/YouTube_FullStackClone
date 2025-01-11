@@ -19,9 +19,10 @@ nav section {
   outline: none;
   border-radius: 10px 0px 0px 10px;
   font-size: 0.9em;
+  /* background-color: blue; */
 }
 .search-sect {
-  width: 450px;
+  width: 90vmin;
   padding: 1px;
   border-radius: 14px;
   display: flex;
@@ -148,13 +149,10 @@ div button {
     grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
 }
 
-.video-gallery{
+.video-gallery,.channel-gallery{
     display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(3,1fr);
-    justify-content: center;
-    place-content: center;
-    /* background-color: aqua; */
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
 }
 
 .blank-page{
