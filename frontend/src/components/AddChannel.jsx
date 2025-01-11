@@ -2,11 +2,15 @@ import axios from "axios";
 import React, { useState } from "react";
 
 const CreateChannelForm = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+   
+    
     const [formData, setFormData] = useState({
         channelName: "",
-        channelEmail: "",
+        channelEmail: user.email,
         description: "",
         channelBanner: null,
+        channelId:""
     });
 
     const [subscribers] = useState(0); // Default value
@@ -28,10 +32,11 @@ const CreateChannelForm = () => {
         // Handle form submission logic (e.g., API call)
         console.log("Form Data Submitted: ", payload);
         axios.post(`http://localhost:3000/channel/create`,payload)
-        .then((res) => console.log(res))
+        .then((res) => console.log(res.data.message))
         .catch((err) => console.error(err));
     };
-
+   
+     
     return (
         <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md mt-10">
             <h1 className="text-2xl font-bold mb-6 text-gray-800">Create Your Channel</h1>
@@ -53,23 +58,7 @@ const CreateChannelForm = () => {
                     />
                 </div>
 
-                {/* Channel Email */}
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2" htmlFor="channelEmail">
-                        Email
-                    </label>
-                    <input
-                        type="email"
-                        id="channelEmail"
-                        name="channelEmail"
-                        value={formData.channelEmail}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                        placeholder="Enter your email (optional)"
-                    />
-                </div>
-
-                {/* Description */}
+               {/* Description */}
                 <div className="mb-4">
                     <label className="block text-gray-700 font-medium mb-2" htmlFor="description">
                         Description
@@ -94,7 +83,21 @@ const CreateChannelForm = () => {
                         type="file"
                         id="channelBanner"
                         name="channelBanner"
+                        value={formData.channelBanner}
                         onChange={handleFileChange}
+                        className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-medium mb-2" htmlFor="channelBanner">
+                        Channel ID
+                    </label>
+                    <input
+                        type="text"
+                        id="channelId"
+                        name="channelId"
+                        value={formData.channelId}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                 </div>
