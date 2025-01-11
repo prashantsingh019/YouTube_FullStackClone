@@ -74,7 +74,7 @@ const Navbar = ({sidebar}) => {
          {
           status? <div className="user rounded-full px-3 py-2 bg-gray-200 cursor-pointer" onClick={()=>dispatch(setAppear())}>
           <FontAwesomeIcon icon={faUser} /> 
-          </div>: <button className="border text-blue-600 rounded-2xl" onClick={handleSignIn}> <FontAwesomeIcon icon={faUser} />  Sign In</button>
+          </div>: <button className="border text-blue-600 rounded-2xl sign-in-btn" onClick={handleSignIn}> <FontAwesomeIcon icon={faUser} />  Sign In</button>
          }
         
         
