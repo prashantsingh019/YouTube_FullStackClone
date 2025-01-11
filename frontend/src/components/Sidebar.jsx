@@ -42,9 +42,9 @@ const Sidebar = ({visiblity}) => {
        <div className={`bottom ${visiblity?'hide':''}`}>
         <div>Subscriptions</div>
         <div>
-            <div className={`sidebar-option ${visiblity?'close':''} `} > <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-2 bg-gray-200"'/>Internshala</div>
-            <div className={`sidebar-option ${visiblity?'close':''} `} > <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-2 bg-gray-200"'/>freeCodeCamp</div>
-            <div className={`sidebar-option ${visiblity?'close':''} `} > <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-2 bg-gray-200"'/>ChaiWithCode</div>
+            <div className={`sidebar-option ${visiblity?'close':''} `} > <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-2 bg-gray-200 icon-user"'/>Internshala</div>
+            <div className={`sidebar-option ${visiblity?'close':''} `} > <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-2 bg-gray-200 icon-user"'/>freeCodeCamp</div>
+            <div className={`sidebar-option ${visiblity?'close':''} `} > <FontAwesomeIcon icon={faUser} className='rounded-full px-3 py-2 bg-gray-200 icon-user"'/>ChaiWithCode</div>
         </div>
        </div>
     </div>
