@@ -35,7 +35,7 @@ const Gallery = () => {
    },[token])
 
   return (
-    <div className='w-[100%]'>
+    <div className='w-[100%] '>
        {isLoggedIn?( <>
        <div className="tags">
         {
@@ -44,7 +44,7 @@ const Gallery = () => {
             })
         }
       </div>
-       <div className="video-gallery border p-[0.5rem] text-lg flex flex-wrap ">
+       <div className="video-gallery border p-[0.5rem] text-lg flex flex-wrap flex-1">
         
         {select ? select.map((video) => {
           return  <Video data={video} baseUrl={baseUrl} key={video._id}/>
